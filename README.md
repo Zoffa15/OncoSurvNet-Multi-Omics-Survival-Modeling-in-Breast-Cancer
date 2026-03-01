@@ -32,8 +32,8 @@ It implements:
 
 ```bash
 pip install -r requirements.txt
-python src/preprocessing.py
-python src/deepsurv_model.py
+python source/preprocessing.py
+python source/deepsurv_model.py
 streamlit run dashboard/app.py
 ```
 

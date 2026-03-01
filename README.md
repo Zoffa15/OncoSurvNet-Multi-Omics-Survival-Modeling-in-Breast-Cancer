@@ -159,6 +159,13 @@ Users must download directly from cBioPortal and place in `data/raw/`.
 
 ---
 
+## Data Governance
+
+Raw TCGA data is not redistributed in this repository.
+Users must download data directly from cBioPortal.
+
+All preprocessing steps are fully reproducible using provided scripts.
+
 ## Repository Structure
 
 ```

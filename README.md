@@ -121,22 +121,271 @@ To run locally:
 
 >  streamlit run app.py
 
-## Future Improvements
+# Multi-Omics Survival Modeling in TCGA BRCA
 
-* External validation on METABRIC
+An end-to-end multi-omics survival modeling framework integrating RNA expression, somatic mutation, and clinical survival data from TCGA Breast Cancer (BRCA).
 
-* SHAP interpretability for DeepSurv
+This project demonstrates production-style machine learning development for oncology analytics, including preprocessing pipelines, feature selection, Cox modeling, DeepSurv neural survival networks, cross-validation, and an interactive Streamlit dashboard.
 
-* Pathway-level modeling
+---
 
-* Multi-modal neural fusion
+## Project Objective
 
-* Batch effect correction
+To build and evaluate multi-omics survival prediction models that:
 
-* Deployment via Docker
+- Integrate transcriptomic and genomic features
+- Account for censoring using survival-aware methods
+- Evaluate performance using concordance index
+- Enable interactive risk exploration through a dashboard
+
+This framework mirrors real-world pharma analytics workflows for biomarker discovery and patient risk stratification.
+
+---
+
+## Data Source
+
+Data derived from:
+
+**TCGA Breast Invasive Carcinoma (BRCA) – PanCancer Atlas 2018**  
+Accessed via cBioPortal.
+
+Required files:
+- Clinical survival data
+- RNA-seq expression (Z-scores, tumor-referenced)
+- Somatic mutation data
+
+Raw TCGA data is not redistributed in this repository.  
+Users must download directly from cBioPortal and place in `data/raw/`.
+
+---
+
+## Repository Structure
+
+```
+multiomics-survival-brca/
+│
+├── README.md
+├── requirements.txt
+├── config/
+│   └── config.yaml
+│
+├── data/
+│   ├── raw/              # user-downloaded TCGA data
+│   ├── processed/        # generated parquet files
+│
+├── src/
+│   ├── preprocessing.py
+│   ├── feature_selection.py
+│   ├── cox_model.py
+│   ├── deepsurv_model.py
+│   ├── evaluation.py
+│   └── utils.py
+│
+├── models/
+│   ├── cox_model.pkl
+│   ├── deepsurv_model.pt
+│   └── scaler.pkl
+│
+├── notebooks/
+│   ├── 01_preprocessing.ipynb
+│   ├── 02_exploration.ipynb
+│   ├── 03_cox.ipynb
+│   ├── 04_deepsurv.ipynb
+│
+└── dashboard/
+    └── app.py
+```
+
+---
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/multiomics-survival-brca.git
+cd multiomics-survival-brca
+```
+
+### Create virtual environment 
+
+```bash
+python -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Data Preparation
+
+Download from cBioPortal:
+
+- `data_clinical_patient.txt`
+- `data_mrna_seq_v2_rsem_zscores_ref_all_samples.txt`
+- `data_mutations.txt`
+
+Place inside:
+
+```
+data/raw/
+```
+
+---
+
+## Run Preprocessing
+
+```bash
+python src/preprocessing.py
+```
+
+Output:
+```
+data/processed/multiomics_merged.parquet
+```
+
+Preprocessing includes:
+
+- Clinical survival cleaning
+- Z-score RNA alignment
+- Variance filtering
+- Mutation binary encoding
+- Multi-omics merge
+
+---
+
+## Train Cox Model
+
+```bash
+python src/cox_model.py
+```
+
+Outputs:
+```
+models/cox_model.pkl
+```
+
+Includes:
+
+- Univariate Cox screening
+- Multivariate Cox model
+- Cross-validation (5-fold)
+- Concordance index evaluation
+
+---
+
+## Train DeepSurv Neural Survival Model
+
+```bash
+python src/deepsurv_model.py
+```
+
+Outputs:
+```
+models/deepsurv_model.pt
+models/scaler.pkl
+```
+
+DeepSurv architecture:
+- Multi-layer perceptron
+- Batch normalization
+- Dropout regularization
+- Early stopping
+- Time-dependent C-index evaluation
+
+---
+
+## Launch Interactive Dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Dashboard features:
+
+- PCA explorer
+- Biomarker hazard exploration
+- Interactive Cox modeling
+- Risk stratification (Kaplan–Meier)
+- DeepSurv-based patient risk scoring
+
+---
+
+## Model Evaluationm!!!!!!!!
+
+Primary metric:
+- Time-dependent Concordance Index (C-index)
+
+Example performance (illustrative):
+
+| Model     | Mean CV C-index |
+|-----------|-----------------|
+| Cox       | 0.64            |
+| DeepSurv  | 0.69            |
+
+DeepSurv demonstrates improved nonlinear modeling capacity while maintaining censor-awareness.
+
+---
+
+## Technical Highlights
+
+- Z-score standardized RNA expression
+- Variance-based gene filtering
+- Multi-omics integration (mutation + expression)
+- Censor-aware survival modeling
+- Cross-validation for generalization assessment
+- Modular, reproducible pipeline
+- Config-driven hyperparameters
+- Model artifact persistence
+- Interactive clinical-style dashboard
+
+---
+
+## 🔬 Methodological Notes
+
+- Survival outcome: Overall Survival (OS)
+- Censoring properly handled via Cox partial likelihood
+- No accuracy metric used (not appropriate for survival tasks)
+- Feature scaling applied before neural training
+- No raw TCGA data redistributed
+
+---
+
+
+## License
+
+This project is licensed under the MIT License.
+
+You are free to:
+- Use
+- Modify
+- Distribute
+- Apply commercially
+
+Attribution is required.
+
+
+
 
 ## Author
 
 Zofia Olszewska
 
 Data Scientist 
+
+## Contact
+
+For questions, collaboration, or discussion:
+sofie.olszewska@gmail.com
+
+---
+
+
+
+

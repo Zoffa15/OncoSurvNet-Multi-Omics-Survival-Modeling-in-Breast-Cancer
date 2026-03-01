@@ -16,17 +16,17 @@ Clinical survival outcomes
 
 It implements:
 
-Principal Component Analysis (PCA)
+* Principal Component Analysis (PCA)
 
-Univariate survival screening (volcano-style)
+* Univariate survival screening (volcano-style)
 
-Multivariate Cox proportional hazards modeling
+* Multivariate Cox proportional hazards modeling
 
-Cross-validation with concordance index
+* Cross-validation with concordance index
 
-DeepSurv neural survival modeling (PyTorch)
+* DeepSurv neural survival modeling (PyTorch)
 
-Interactive Streamlit dashboard for exploration and risk prediction
+* Interactive Streamlit dashboard for exploration and risk prediction
 
 ## Motivation
 
@@ -34,13 +34,13 @@ Traditional survival models often rely on a single molecular layer. However, can
 
 This project demonstrates how multi-omics integration can improve:
 
-Risk stratification
+* Risk stratification
 
-Biomarker discovery
+* Biomarker discovery
 
-Model generalization
+* Model generalization
 
-Translational interpretability
+* Translational interpretability
 
 Designed with industry oncology applications in mind.
 
@@ -48,17 +48,17 @@ Designed with industry oncology applications in mind.
 
 Source:
 
-TCGA Breast Cancer (PanCancer Atlas)
+* TCGA Breast Cancer (PanCancer Atlas)
 
 Accessed via cBioPortal
 
 Data modalities:
 
-RNA-seq (RSEM Z-scores relative to tumor samples)
+* RNA-seq (RSEM Z-scores relative to tumor samples)
 
 Mutation MAF
 
-Clinical survival data (OS_MONTHS, OS_STATUS)
+* Clinical survival data (OS_MONTHS, OS_STATUS)
 
 ## Methods
 1. Dimensionality Reduction
@@ -117,21 +117,23 @@ Patient-level risk scoring
 
 To run locally:
 
-pip install -r requirements.txt
-streamlit run app.py
+>  pip install -r requirements.txt
+
+>  streamlit run app.py
+
 ## Future Improvements
 
-External validation on METABRIC
+* External validation on METABRIC
 
-SHAP interpretability for DeepSurv
+* SHAP interpretability for DeepSurv
 
-Pathway-level modeling
+* Pathway-level modeling
 
-Multi-modal neural fusion
+* Multi-modal neural fusion
 
-Batch effect correction
+* Batch effect correction
 
-Deployment via Docker
+* Deployment via Docker
 
 ## Author
 

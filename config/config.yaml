@@ -1,0 +1,12 @@
+random_seed: 42
+n_genes: 1000
+learning_rate: 0.001
+epochs: 200
+batch_size: 256
+dropout: 0.3
+hidden_layers: [128, 64, 32]
+mutation_genes:
+  - TP53
+  - PIK3CA
+  - GATA3
+  - CDH1

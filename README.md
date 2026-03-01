@@ -28,6 +28,14 @@ It implements:
 
 * Interactive Streamlit dashboard for exploration and risk prediction
 
+## Quick Start
+
+```bash
+pip install -r requirements.txt
+python src/preprocessing.py
+python src/deepsurv_model.py
+streamlit run dashboard/app.py
+
 ## Motivation
 
 Traditional survival models often rely on a single molecular layer. However, cancer is driven by complex genomic and transcriptional interactions.

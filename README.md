@@ -363,7 +363,7 @@ DeepSurv demonstrates improved nonlinear modeling capacity while maintaining cen
 
 ---
 
-## 🔬 Methodological Notes
+## Methodological Notes
 
 - Survival outcome: Overall Survival (OS)
 - Censoring properly handled via Cox partial likelihood

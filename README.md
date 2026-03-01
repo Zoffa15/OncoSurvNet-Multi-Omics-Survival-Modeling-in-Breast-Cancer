@@ -344,10 +344,13 @@ Primary metric:
 
 Example performance (illustrative):
 
-| Model     | Mean CV C-index |
-|-----------|-----------------|
-| Cox       | 0.64            |
-| DeepSurv  | 0.69            |
+| Model               | Mean CV C-index |
+|---------------------|-----------------|
+| DeepSurv Model                  | 0.67        |
+| Multivariate Cox (Top 20 Genes) | 0.65        |
+| Multi-Omics (Lasso Regularized | 0.64         |
+| Multi-Omics (L2 Regularized) | 0.63           |
+| Multi-Omics (Robust Genes)  | 0.62            |
 
 DeepSurv demonstrates improved nonlinear modeling capacity while maintaining censor-awareness.
 

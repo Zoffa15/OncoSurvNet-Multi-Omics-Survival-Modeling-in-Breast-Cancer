@@ -53,6 +53,10 @@ This project demonstrates how multi-omics integration can improve:
 
 Designed with industry oncology applications in mind.
 
+## Disclaimer
+This project is for research and educational purposes only.
+It is not intended for clinical decision-making.
+
 ## Dataset
 
 Source:

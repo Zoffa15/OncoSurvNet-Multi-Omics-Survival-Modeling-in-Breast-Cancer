@@ -93,13 +93,13 @@ Kaplan–Meier survival separation
 
 ## Performance Metrics
 
-Concordance Index (C-index)
+* Concordance Index (C-index)
 
-Time-dependent C-index (DeepSurv)
+* Time-dependent C-index (DeepSurv)
 
-Cross-validation
+* Cross-validation
 
-Hazard Ratios
+* Hazard Ratios
 
 ## Interactive Dashboard
 
@@ -138,4 +138,5 @@ To run locally:
 ## Author
 
 Zofia Olszewska
+
 Data Scientist 

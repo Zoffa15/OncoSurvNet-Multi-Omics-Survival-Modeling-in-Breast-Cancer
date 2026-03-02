@@ -378,16 +378,10 @@ You are free to:
 Attribution is required.
 
 
-
-
-
-
-
 ## Author
 
 Zofia Olszewska
 
-Data Scientist 
 
 ## Contact
 

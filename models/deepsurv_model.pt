@@ -1,0 +1,5 @@
+# save placeholder model (run once in Python)
+import torch
+from src.deepsurv_model import net
+
+torch.save(net.state_dict(), "models/deepsurv_model.pt")

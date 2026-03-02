@@ -181,41 +181,25 @@ All preprocessing steps are fully reproducible using provided scripts.
 
 ## Repository Structure
 
+
 ```
 multiomics-survival-brca/
-│
 ├── README.md
 ├── requirements.txt
-├── config/
-│   └── config.yaml
-│
+├── config/config.yaml
 ├── data/
-│   ├── raw/              # user-downloaded TCGA data
-│   ├── processed/        # generated parquet files
-│
-├── src/
-│   ├── preprocessing.py
-│   ├── feature_selection.py
-│   ├── cox_model.py
-│   ├── deepsurv_model.py
-│   ├── evaluation.py
-│   └── utils.py
-│
+├── src/__init__.py
 ├── models/
 │   ├── cox_model.pkl
+│   ├── deepsurv_features.pt
+│   ├── deepsurv_imputer.pt
 │   ├── deepsurv_model.pt
-│   └── scaler.pkl
-│
-├── notebooks/
-│   ├── 01_preprocessing.ipynb
-│   ├── 02_exploration.ipynb
-│   ├── 03_cox.ipynb
-│   ├── 04_deepsurv.ipynb
-│
-└── dashboard/
-    └── app.py
+│   ├── deepsurv_pipeline.pt
+│   └── deepsurv_scaler.pkl
+│   └── deepsurv_weights.pt
+├── notebooks/code.ipynb
+└── dashboard/app.py
 ```
-
 ---
 
 ## Installation
@@ -392,6 +376,9 @@ You are free to:
 - Apply commercially
 
 Attribution is required.
+
+
+
 
 
 

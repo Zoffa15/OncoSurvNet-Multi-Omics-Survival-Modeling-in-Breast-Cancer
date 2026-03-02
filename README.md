@@ -4,15 +4,15 @@ Multi-omics survival modeling framework integrating RNA-seq, mutation, and clini
 
 ## Project Overview
 
-OncoSurvNet is a translational AI framework for survival modeling in breast cancer using multi-omics data from TCGA (via cBioPortal).
+OncoSurvNet is a translational ML framework for survival modeling in breast cancer using multi-omics data from TCGA (via cBioPortal).
 
 The project integrates:
 
-RNA-seq expression (Z-scored)
+* RNA-seq expression (Z-scored)
 
-Somatic mutation profiles
+* Somatic mutation profiles
 
-Clinical survival outcomes
+* Clinical survival outcomes
 
 It implements:
 
@@ -41,78 +41,23 @@ streamlit run dashboard/app.py
 
 Traditional survival models often rely on a single molecular layer. However, cancer is driven by complex genomic and transcriptional interactions.
 
-This project demonstrates how multi-omics integration can improve:
+## Project Objective
 
-* Risk stratification
+To build and evaluate multi-omics survival prediction models that:
 
-* Biomarker discovery
+- Integrate transcriptomic and genomic features
+- Account for censoring using survival-aware methods
+- Evaluate performance using concordance index
+- Enable interactive risk exploration through a dashboard
 
-* Model generalization
+This framework mirrors real-world pharma analytics workflows for biomarker discovery and patient risk stratification.
 
-* Translational interpretability
-
-Designed with industry oncology applications in mind.
 
 ## Disclaimer
 This project is for research and educational purposes only.
 It is not intended for clinical decision-making.
 
-## Dataset
 
-Source:
-
-* TCGA Breast Cancer (PanCancer Atlas)
-
-Accessed via cBioPortal
-
-Data modalities:
-
-* RNA-seq (RSEM Z-scores relative to tumor samples)
-
-Mutation MAF
-
-* Clinical survival data (OS_MONTHS, OS_STATUS)
-
-## Methods
-1. Dimensionality Reduction
-
-PCA to explore transcriptional variance structure
-
-2. Biomarker Screening
-
-Univariate Cox models
-
-Hazard ratio + p-value visualization
-
-3. Multivariate Modeling
-
-Cox proportional hazards regression
-
-Cross-validated C-index
-
-4. Deep Learning Survival
-
-DeepSurv neural Cox model
-
-Early stopping
-
-Time-dependent concordance index
-
-5. Risk Stratification
-
-Median split risk groups
-
-Kaplan–Meier survival separation
-
-## Performance Metrics
-
-* Concordance Index (C-index)
-
-* Time-dependent C-index (DeepSurv)
-
-* Cross-validation
-
-* Hazard Ratios
 
 ## Interactive Dashboard
 
@@ -134,24 +79,6 @@ To run locally:
 
 >  streamlit run app.py
 
-# Multi-Omics Survival Modeling in TCGA BRCA
-
-An end-to-end multi-omics survival modeling framework integrating RNA expression, somatic mutation, and clinical survival data from TCGA Breast Cancer (BRCA).
-
-This project demonstrates production-style machine learning development for oncology analytics, including preprocessing pipelines, feature selection, Cox modeling, DeepSurv neural survival networks, cross-validation, and an interactive Streamlit dashboard.
-
----
-
-## Project Objective
-
-To build and evaluate multi-omics survival prediction models that:
-
-- Integrate transcriptomic and genomic features
-- Account for censoring using survival-aware methods
-- Evaluate performance using concordance index
-- Enable interactive risk exploration through a dashboard
-
-This framework mirrors real-world pharma analytics workflows for biomarker discovery and patient risk stratification.
 
 ---
 
@@ -238,21 +165,12 @@ Download from cBioPortal:
 Place inside:
 
 ```
-data/raw/
+data/
 ```
 
 ---
 
-## Run Preprocessing
-
-```bash
-python src/preprocessing.py
-```
-
-Output:
-```
-data/processed/multiomics_merged.parquet
-```
+## Data Preprocessing
 
 Preprocessing includes:
 
@@ -264,16 +182,7 @@ Preprocessing includes:
 
 ---
 
-## Train Cox Model
-
-```bash
-python src/cox_model.py
-```
-
-Outputs:
-```
-models/cox_model.pkl
-```
+## Cox Model
 
 Includes:
 
@@ -284,17 +193,7 @@ Includes:
 
 ---
 
-## Train DeepSurv Neural Survival Model
-
-```bash
-python src/deepsurv_model.py
-```
-
-Outputs:
-```
-models/deepsurv_model.pt
-models/scaler.pkl
-```
+## DeepSurv Neural Survival Model
 
 DeepSurv architecture:
 - Multi-layer perceptron
@@ -321,12 +220,11 @@ Dashboard features:
 
 ---
 
-## Model Evaluationm!!!!!!!!
+## Model Evaluation
 
-Primary metric:
+Metric:
 - Time-dependent Concordance Index (C-index)
-
-Example performance (illustrative):
+Model performance:
 
 | Model               | Mean CV C-index |
 |---------------------|-----------------|
